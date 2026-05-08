@@ -1,8 +1,22 @@
+CREATE TABLE admin_users (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO admin_users (username, password, full_name, is_active) VALUES
+('admin', 'admin123', 'Main Admin', 1);
+
+
 CREATE TABLE users (
     userid INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
     password VARCHAR(50),
-    email VARCHAR(100)
+    email VARCHAR(100),
+    is_active TINYINT(1) DEFAULT 1
 );
 
 INSERT INTO users(userid, username,password,email) VALUES
@@ -43,5 +57,6 @@ CREATE TABLE orders (
     pid INT,
     quantity INT,
     total INT,
+    order_status VARCHAR(20) DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
