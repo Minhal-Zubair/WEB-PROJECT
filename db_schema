@@ -1,0 +1,47 @@
+CREATE TABLE users (
+    userid INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(50),
+    email VARCHAR(100)
+);
+
+INSERT INTO users(userid, username,password,email) VALUES
+(1, 'Ali','123','ali@gmail.com'),
+(2, 'Sara','345','sara@gmail.com');
+
+
+CREATE TABLE products (
+    pid INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    category VARCHAR(50),
+    price INT,
+    image VARCHAR(200)
+);
+
+INSERT INTO products(name,category,price,image) VALUES
+('Nike Shoes','Shoes',5000,'images/shoe1.jpg'),
+('Adidas Shoes','Shoes',4500,'images/shoe2.jpg'),
+('CK Shoes','Shoes',4500,'images/shoe3.jpg'),
+('T Shirt','Cloth',2000,'images/cloth1.jpg'),
+('Jacket','Cloth',4000,'images/cloth2.jpg'),
+('Cap','Cloth',1000,'images/cloth3.jpg'),
+('Watch','Accessory',3500,'images/watch.jpg'),
+('Pendant','Cloth',1000,'images/pendant.jpg');
+
+
+CREATE TABLE cart (
+    cid INT AUTO_INCREMENT PRIMARY KEY,
+    uid INT,
+    pid INT,
+    quantity INT
+);
+
+
+CREATE TABLE orders (
+    oid INT AUTO_INCREMENT PRIMARY KEY,
+    uid INT,
+    pid INT,
+    quantity INT,
+    total INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
